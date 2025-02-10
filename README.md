@@ -71,16 +71,24 @@
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 3. Client Account Management
+ 3. User Authentication for Authorization
+    ┌─────────────────────────────────────────────────────────────┐
+    │ • Redirect client to the OAuth2 consent screen                │
+    │ • Client logs in and grants permission for manager actions    │
+    │ • Secure tokens/permissions are returned to the backend       │
+    └─────────────────────────────────────────────────────────────┘
+            │
+            ▼
+ 4. Client Account Management
     ┌─────────────────────────────────────────────────────────────┐
     │ • Use the API (CustomerService) to automatically create new   │
     │   client accounts under your Manager account                  │
-    │ • (Or link existing client accounts via invitation acceptance) │
+    │ • Or link existing client accounts via invitation acceptance   │
     │ • New client accounts are created with basic settings only     │
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 4. Billing Setup
+ 5. Billing Setup
     ┌─────────────────────────────────────────────────────────────┐
     │ • Each client account must set up its own billing information  │
     │   manually in the Billing & Payments section                  │
@@ -88,17 +96,17 @@
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 5. Automated Ad Management with Python
+ 6. Automated Ad Management with Python
     ┌─────────────────────────────────────────────────────────────┐
     │ • Write Python code using the Google Ads API client library    │
-    │   to create ads (e.g., via AdGroupAdService) and retrieve       │
-    │   campaign metrics (using GoogleAdsService and GAQL queries)    │
-    │ • Use the centralized GCP project and OAuth2 credentials to     │
-    │   manage ads across all linked client accounts                  │
+    │   to create ads (via AdGroupAdService) and retrieve campaign     │
+    │   metrics (using GoogleAdsService & GAQL queries)              │
+    │ • Use the centralized GCP project and OAuth2 tokens to manage   │
+    │   ads across all linked client accounts                        │
     └─────────────────────────────────────────────────────────────┘
-
 ──────────────────────────────────────────────────────────────────────────────
-                         Meta (Facebook/Instagram) Workflow
+──────────────────────────────────────────────────────────────────────────────
+                      Meta (Facebook/Instagram) Workflow
 ──────────────────────────────────────────────────────────────────────────────
  1. Manager Account Setup
     ┌─────────────────────────────────────────────────────────────┐
@@ -111,22 +119,30 @@
     ┌─────────────────────────────────────────────────────────────┐
     │ • Create a Facebook Developer App in the Developer Dashboard   │
     │ • Obtain App ID, App Secret, and generate an access token        │
-    │ • Complete the OAuth2 flow to get user permissions              │
+    │ • Complete the OAuth2 flow to get necessary permissions          │
     │   (e.g., ads_management, business_management)                   │
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 3. Client Account Management
+ 3. User Authentication for Authorization
     ┌─────────────────────────────────────────────────────────────┐
-    │ • Use the API (via Business Manager API endpoints) to create    │
-    │   new client ad accounts under your Business Manager            │
-    │ • (Or link existing ad accounts via invitations that clients    │
-    │   must accept)                                                  │
-    │ • New ad accounts are created with basic settings only           │
+    │ • Redirect client to Facebook’s OAuth consent dialog            │
+    │ • Client logs in and explicitly grants permission for your app    │
+    │   to manage their ad account                                    │
+    │ • Secure access tokens are provided to your backend             │
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 4. Billing Setup
+ 4. Client Account Management
+    ┌─────────────────────────────────────────────────────────────┐
+    │ • Use the API (via Business Manager endpoints) to create new    │
+    │   client ad accounts under your Business Manager                │
+    │ • Or link existing ad accounts via invitation acceptance         │
+    │ • New ad accounts are created with basic settings only            │
+    └─────────────────────────────────────────────────────────────┘
+            │
+            ▼
+ 5. Billing Setup
     ┌─────────────────────────────────────────────────────────────┐
     │ • Each ad account must set up its own billing manually          │
     │   in Facebook Ads Manager (Billing & Payments section)          │
@@ -134,12 +150,14 @@
     └─────────────────────────────────────────────────────────────┘
             │
             ▼
- 5. Automated Ad Management with Python
+ 6. Automated Ad Management with Python
     ┌─────────────────────────────────────────────────────────────┐
-    │ • Write Python code using the Facebook Business SDK (or call     │
-    │   the Graph API) to create ads and manage campaigns              │
-    │ • Retrieve campaign metrics and insights via the API             │
-    │ • Use your centralized app credentials and OAuth tokens to       │
-    │   manage ads across all linked client ad accounts                  │
+    │ • Write Python code using the Facebook Business SDK or Graph API │
+    │   to create and manage campaigns and ads                        │
+    │ • Retrieve campaign insights via API calls                       │
+    │ • Use centralized app credentials and OAuth tokens to manage     │
+    │   ads across all linked client ad accounts                         │
     └─────────────────────────────────────────────────────────────┘
+──────────────────────────────────────────────────────────────────────────────
+
 ```
