@@ -51,6 +51,7 @@
                   └──────────────────────────────┘
 
 ## Account Setup Workflow : 
+```bash
 ──────────────────────────────────────────────────────────────────────────────
                            Google Ads Workflow
 ──────────────────────────────────────────────────────────────────────────────
@@ -141,4 +142,4 @@
     │ • Use your centralized app credentials and OAuth tokens to       │
     │   manage ads across all linked client ad accounts                  │
     └─────────────────────────────────────────────────────────────┘
-
+```
