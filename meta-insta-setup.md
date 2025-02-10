@@ -92,6 +92,38 @@ except Exception as e:
     print("Error creating ad account:", e)
 ```
 
+```python
+from facebook_business.api import FacebookAdsApi
+from facebook_business.adobjects.business import Business
+
+# Initialize the API with your app credentials.
+access_token = 'YOUR_FACEBOOK_ACCESS_TOKEN'
+app_secret = 'YOUR_APP_SECRET'
+app_id = 'YOUR_APP_ID'
+FacebookAdsApi.init(app_id=app_id, app_secret=app_secret, access_token=access_token)
+
+# Your Business Manager ID
+business_id = 'YOUR_BUSINESS_ID'
+business = Business(business_id)
+
+# The existing ad account ID to be linked (with the "act_" prefix)
+existing_ad_account_id = 'act_YOUR_EXISTING_AD_ACCOUNT_ID'
+
+# Parameters for the assignment request.
+params = {
+    'adaccount_id': existing_ad_account_id,
+    # Specify the role for the ad account assignment; commonly 'ADMIN' is used.
+    'role': 'ADMIN',
+}
+
+try:
+    # Initiate the linking (assignment) request.
+    response = business.create_assigned_ad_account(params=params)
+    print("Linking request initiated:", response)
+    # The ad account owner must accept the invitation before the account is fully linked.
+except Exception as e:
+    print("Error linking ad account:", e)
+```
 ### 🔍 **What This Does:**
 
 - **Uses your Business Manager’s ID to create a new ad account:**  
