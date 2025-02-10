@@ -209,8 +209,7 @@ except Exception as e:
 
 ## Step 4. Billing Setup
 
-- Ad Account Billing in Meta:
-- Although you can create and manage ad accounts and campaigns via the API, the billing setup (linking a client’s payment method) cannot be automated through the API.
+- Ad Account Billing in Meta : Although you can create and manage ad accounts and campaigns via the API, the billing setup (linking a client’s payment method) cannot be automated through the API.
 - Manual Action Required : Once a new ad account is created, you or the client must log into Facebook Ads Manager and configure the billing settings (adding credit card, bank details, or setting up invoicing).
 
 # Final Summary
